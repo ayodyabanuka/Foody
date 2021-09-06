@@ -15,13 +15,15 @@ class _loginState extends State<login> {
     return Scaffold(
       body: Column(
         children: [
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: 400,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.fitWidth,
-                image: AssetImage('assets/images/loginback.png'),
+          Expanded(
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: 400,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.fitWidth,
+                  image: AssetImage('assets/images/loginback.png'),
+                ),
               ),
             ),
           ),
@@ -39,7 +41,7 @@ class _loginState extends State<login> {
                     child: Column(
                       children: [
                         SizedBox(
-                          height: 10,
+                          height: 30,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -61,7 +63,7 @@ class _loginState extends State<login> {
                           textAlign: TextAlign.left,
                           onChanged: (value) {},
                           decoration: InputDecoration(
-                              focusColor: Colors.black,
+                              focusColor: Color(0xFFFBC714),
                               hintText: "IT Number",
                               hintStyle: TextStyle(color: Colors.black26),
                               border: OutlineInputBorder(
@@ -76,7 +78,7 @@ class _loginState extends State<login> {
                           textAlign: TextAlign.left,
                           onChanged: (value) {},
                           decoration: InputDecoration(
-                              focusColor: Colors.black,
+                              focusColor: Color(0xFFFBC714),
                               hintText: "Password",
                               hintStyle: TextStyle(color: Colors.black26),
                               border: OutlineInputBorder(
@@ -103,7 +105,7 @@ class _loginState extends State<login> {
                         ),
                         Material(
                           elevation: 2,
-                          color: Colors.yellow,
+                          color: Color(0xFFFBC714),
                           borderRadius: BorderRadius.circular(23.0),
                           child: MaterialButton(
                             onPressed: () {
@@ -150,7 +152,7 @@ class _loginState extends State<login> {
                                   style: TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.yellow),
+                                      color: Color(0xFFFBC714)),
                                 ))
                           ],
                         ),

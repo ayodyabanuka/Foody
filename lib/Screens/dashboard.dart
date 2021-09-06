@@ -1,139 +1,81 @@
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:foody/widgets/bottomNavbar.dart';
+import 'package:foody/Screens/cart.dart';
+import 'package:foody/Screens/profile.dart';
+import 'package:foody/Screens/screen.dart';
+import 'package:foody/widgets/dashboardwidget.dart';
+import 'package:ionicons/ionicons.dart';
 
 class dashboard extends StatefulWidget {
-  dashboard({Key? key}) : super(key: key);
-
   @override
   _dashboardState createState() => _dashboardState();
 }
 
 class _dashboardState extends State<dashboard> {
+  int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.menu,
-                color: Colors.black,
-              )),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          actions: [
-            Image.asset(
-              'assets/images/foodysmalllogo.png',
-              width: 100,
-            ),
-          ],
+      body: Stack(
+        children: [
+          buildPages(),
+        ],
+      ),
+      bottomNavigationBar: bottomNavBar(),
+    );
+  }
+
+  Widget bottomNavBar() {
+    return BottomNavyBar(
+      selectedIndex: _currentIndex,
+      showElevation: false,
+      containerHeight: 70,
+      itemCornerRadius: 12,
+      curve: Curves.easeInOut,
+      onItemSelected: (index) => setState(() => _currentIndex = index),
+      items: <BottomNavyBarItem>[
+        BottomNavyBarItem(
+          icon: Icon(Ionicons.home),
+          title: Text('Home'),
+          activeColor: Color(0xFFFBC714),
+          inactiveColor: Colors.black38,
+          textAlign: TextAlign.center,
         ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'HI John!',
-                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Offers',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.yellow),
-                    ),
-                    Text(
-                      'See More',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(fontSize: 12, color: Colors.black38),
-                    ),
-                  ],
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/offer1.png'),
-                        fit: BoxFit.fitHeight),
-                  ),
-                  height: 178,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  'MENU',
-                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                ),
-                Column(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/menu1.png'),
-                        ),
-                      ),
-                      height: 130,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/menu1.png'),
-                        ),
-                      ),
-                      height: 130,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/menu1.png'),
-                        ),
-                      ),
-                      height: 130,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/menu1.png'),
-                        ),
-                      ),
-                      height: 130,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/menu1.png'),
-                        ),
-                      ),
-                      height: 130,
-                    ),
-                  ],
-                ),
-              ],
+        BottomNavyBarItem(
+            icon: Icon(Ionicons.search),
+            title: Text('Search'),
+            activeColor: Color(0xFFFBC714),
+            textAlign: TextAlign.center,
+            inactiveColor: Colors.black38),
+        BottomNavyBarItem(
+            icon: Icon(Ionicons.cart),
+            title: Text(
+              'Cart',
             ),
-          ),
-        ),
-        bottomNavigationBar: bottomnav());
+            activeColor: Color(0xFFFBC714),
+            textAlign: TextAlign.center,
+            inactiveColor: Colors.black38),
+        BottomNavyBarItem(
+            icon: Icon(Ionicons.man),
+            title: Text('Profile'),
+            activeColor: Color(0xFFFBC714),
+            textAlign: TextAlign.center,
+            inactiveColor: Colors.black38),
+      ],
+    );
+  }
+
+  Widget buildPages() {
+    switch (_currentIndex) {
+      case 1:
+        return searchscreen();
+      case 2:
+        return cart();
+      case 3:
+        return profile();
+      case 0:
+      default:
+        return dashboardWidget();
+    }
   }
 }

@@ -30,6 +30,7 @@ dependencies:
   google_fonts: ^2.1.0
   lottie:
   ionicons: ^0.1.2
+  bottom_navy_bar:
 
 dev_dependencies:
   flutter_test:

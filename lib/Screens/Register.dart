@@ -116,7 +116,7 @@ class _RegisterState extends State<Register> {
                   ),
                   Material(
                     elevation: 2,
-                    color: Colors.yellow,
+                    color: Color(0xFFFBC714),
                     borderRadius: BorderRadius.circular(23.0),
                     child: MaterialButton(
                       onPressed: () {
